@@ -1,82 +1,33 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Dropdown Menu</title>
+    <title>JS Form Validation</title>
     <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
   </head>
   <body>
-    <script src="main.js" defer></script>
 
-    <div class="head-bar">
-    <nav class="navbar">
-        <h3 class="logo">LOGO</h3>
-        <div>
-            <span class="menu-icon">Menu</span>
+    <div class="form-container">
+        <form id="input-form" name="input-form" novalidate>
+            <label for="email-input">Enter an Email Address</label>
+            <input type="email" id="email-input" name="email-input" placeholder="bobby@treehouse.tree" required minlength="8">
+            <span class="error" aria-live="polite"></span>
 
-            <ul class="dropdown-content dropdown-content-hidden">
-                <li class="menu-element">Home</li>
-                <li class="menu-element">News</li>
-                <li class="menu-element">Exercises</li>
-                <li class="menu-element">Workouts</li>
-                <li class="menu-element">Studies</li>
-            </ul>
-           </div>
+            <label for="country-input">Enter a Country</label>
+            <input type="text" id="country-input" name="country-input" placeholder="Afnargia" required>
 
-    </nav>
-</div>
+            <label for="zip-code-input">Enter a Zip Code</label>
+            <input type="text" id="zip-code-input" name="zip-code-input" placeholder="1VO 2ZX" required>
 
-<div class="body-area">
+            <label for="password-input">Enter a Password</label>
+            <input type="password" id="password-input" name="password-input" placeholder="Gho231xz" required>
 
- <section aria-label="Newest Photos">
-    
-    <div class="image-carousel">
-    <div class="carousel" data-carousel>
-        <button class="carousel-button prev" data-carousel-button="prev">&#8647;</button>
-        
-        <ul data-slides>
-            <li class="slide" >
-                <img src="/src/images/pig-fence_square.webp" alt="A pig on a fence #1">
-            </li>
-            <li class="slide" >
-                <img src="/src/images/brown-Guernsey-cow.webp" alt="A pig on a fence #1">
-            </li>
-            <li class="slide">
-                <img src="/src/images/istockphoto-645788690-612x612.jpg" alt="A pig on a fence #1">
-            </li>
-            <li class="slide">
-                <img src="/src/images/pig-fence_square.webp" alt="A pig on a fence #1">
-            </li>
-            <li class="slide" >
-                <img src="/src/images/brown-Guernsey-cow.webp" alt="A pig on a fence #1">
-            </li>
-            <li class="slide" data-active= "true">
-                <img src="/src/images/istockphoto-645788690-612x612.jpg" alt="A pig on a fence #1">
-            </li>
-        </ul>
+            <button>Submit</button>
 
-        <button class="carousel-button next" data-carousel-button="next">&#8649;</button>
-        
-        
+        </form>
 
 
     </div>
-
     
-    <div class="img-circles">
-        <div class="circle" ></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle" data-active= "true"></div>
-
-    </div>
-</div>
-
-</div>
- </section>
-
-
-
   </body>
 </html>

@@ -1,14 +1,11 @@
-import assignEventListeners from "./assignEventListeners";
-import imageCarousel from "./imageCarousel";
+const emailInput = document.getElementById("email-input");
+console.log(emailInput);
 
-
-assignEventListeners(
-    ".menu-icon", 
-    ".menu-element",
-    ".dropdown-content", 
-    "dropdown-content-display", 
-    "dropdown-content-hidden" 
-    );
-
-    imageCarousel();
-
+emailInput.addEventListener("input", (event) =>{
+   console.log("HEEEEE");
+   if (emailInput.validity.typeMismatch) {
+    emailInput.setCustomValidity("I am expecting an email address!");
+} else {
+    emailInput.setCustomValidity("");
+}
+});
