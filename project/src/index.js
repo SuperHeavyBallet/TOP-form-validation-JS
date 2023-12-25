@@ -12,9 +12,27 @@ const zipCodeError = document.getElementById("zip-code-error");
 const passwordInput = document.getElementById("password-input");
 const passwordError = document.getElementById("password-error");
 
+
 function showError(input)
 {
-    if(input.validity.valueMissing){
+    
+    if (input.value.includes(" "))
+    {
+        if (input === emailInput){
+            emailError.textContent = "Do not use spaces";
+        }
+        else if (input === countryInput){
+            countryError.textContent = "Do not use spaces";
+        }
+        else if (input === zipCodeInput){
+            zipCodeError.textContent = "Do not use spaces";
+        }
+        else if (input === passwordInput){
+            passwordError.textContent = "Do not use spaces";
+        }
+    }
+
+    else if(input.validity.valueMissing){
         if (input === emailInput){
             emailError.textContent = "You need to enter an Email Address";
         }
@@ -43,52 +61,78 @@ function showError(input)
             passwordError.textContent = "Entered value needs to be a password";
         }
     }
-    else if (input.validity.tooShort)
+   
+    else if (input.validity.tooShort )
     {
         if (input === emailInput){
-            emailError.textContent = `Email should be at least ${input.minLength} 
-            characters; you entered ${input.value.length}.`;
+                    emailError.textContent = `Email should be at least ${input.minLength} 
+                    characters; you entered ${input.value.length}.`;
         }
         if (input === countryInput){
-            countryError.textContent = `Country should be at least ${input.minLength} 
-            characters; you entered ${input.value.length}.`;
+                    countryError.textContent = `Country should be at least ${input.minLength} 
+                    characters; you entered ${input.value.length}.`;
         }
         else if (input === zipCodeInput){
-            zipCodeError.textContent = `Zip Code should be at least ${input.minLength} 
-            characters; you entered ${input.value.length}.`;
+                    zipCodeError.textContent = `Zip Code should be at least ${input.minLength} 
+                    characters; you entered ${input.value.length}.`;
         }
         else if (input === passwordInput){
-            passwordError.textContent = `Password should be at least ${input.minLength} 
-            characters; you entered ${input.value.length}.`;
+                    passwordError.textContent = `Password should be at least ${input.minLength} 
+                    characters; you entered ${input.value.length}.`;
+        }
+    }
+        
+    
+
+    else if (input === zipCodeInput && !isValidUSZip(input.value))
+    {
+        if (!/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(input))
+        {   
+            zipCodeError.textContent = "Please enter a valid zip code";
         }
     }
 
+
+   
+   
+
     if (input === emailInput)
     {
-        emailError.className = "error active";
+            emailError.className = "error active";
     }
     else if (input === countryInput)
     {
-        countryError.className = "error active";
+            countryError.className = "error active";
     }
     else if (input === zipCodeInput)
     {
-        zipCodeError.className = "error active";
+            zipCodeError.className = "error active";
     }
     else if (input === passwordInput)
     {
-        passwordError.className = "error active";
+            passwordError.className = "error active";
     }
 
 }
 
 
+
+
+function isValidUSZip(input)
+{
+    return (!/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(input))
+}
+
+
 emailInput.addEventListener("input", (event) => 
 {
-    if (emailInput.validity.valid)
+    if (!emailInput.value.includes(" "))
     {
-        emailError.textContent = "";
-        emailError.className = "error";
+        if (emailInput.validity.valid)
+        {
+            emailError.textContent = "";
+            emailError.className = "error";
+        }
     }
     else
     {
@@ -99,10 +143,13 @@ emailInput.addEventListener("input", (event) =>
 
 emailInput.addEventListener("focusout", (event) => 
 {
-    if (emailInput.validity.valid)
+    if (!emailInput.value.includes(" "))
     {
-        emailError.textContent = "";
-        emailError.className = "error";
+        if (emailInput.validity.valid)
+        {
+            emailError.textContent = "";
+            emailError.className = "error";
+        }
     }
     else
     {
@@ -113,10 +160,13 @@ emailInput.addEventListener("focusout", (event) =>
 
 countryInput.addEventListener("input", (event) => 
 {
-    if (countryInput.validity.valid)
+    if (!countryInput.value.includes(" "))
     {
-        countryError.textContent = "";
-        countryError.className = "error";
+        if (countryInput.validity.valid)
+        {
+            countryError.textContent = "";
+            countryError.className = "error";
+        }
     }
     else
     {
@@ -127,10 +177,13 @@ countryInput.addEventListener("input", (event) =>
 
 countryInput.addEventListener("focusout", (event) => 
 {
-    if (countryInput.validity.valid)
+    if (!countryInput.value.includes(" "))
     {
-        countryError.textContent = "";
-        countryError.className = "error";
+        if (countryInput.validity.valid)
+        {
+            countryError.textContent = "";
+            countryError.className = "error";
+        }
     }
     else
     {
@@ -141,10 +194,13 @@ countryInput.addEventListener("focusout", (event) =>
 
 zipCodeInput.addEventListener("input", (event) =>
 {
-    if (zipCodeInput.validity.valid)
+    if (!zipCodeInput.value.includes(" "))
     {
-        zipCodeError.textContent = "";
-        zipCodeError.className = "error";
+        if (zipCodeInput.validity.valid)
+        {
+            zipCodeError.textContent = "";
+            zipCodeError.className = "error";
+        }
     }
     else
     {
@@ -154,10 +210,13 @@ zipCodeInput.addEventListener("input", (event) =>
 
 zipCodeInput.addEventListener("focusout", (event) =>
 {
-    if (zipCodeInput.validity.valid)
+    if (!zipCodeInput.value.includes(" "))
     {
-        zipCodeError.textContent = "";
-        zipCodeError.className = "error";
+        if (zipCodeInput.validity.valid)
+        {
+            zipCodeError.textContent = "";
+            zipCodeError.className = "error";
+        }
     }
     else
     {
@@ -167,10 +226,13 @@ zipCodeInput.addEventListener("focusout", (event) =>
 
 passwordInput.addEventListener("input", (event) =>
 {
-    if (passwordInput.validity.valid)
+    if (!passwordInput.value.includes(" "))
     {
-        passwordError.textContent = "";
-        passwordError.className = "error";
+        if (passwordInput.validity.valid)
+        {
+            passwordError.textContent = "";
+            passwordError.className = "error";
+        }
     }
     else
     {
@@ -180,10 +242,13 @@ passwordInput.addEventListener("input", (event) =>
 
 passwordInput.addEventListener("focusout", (event) =>
 {
-    if (passwordInput.validity.valid)
+    if (!passwordInput.value.includes(" "))
     {
-        passwordError.textContent = "";
-        passwordError.className = "error";
+        if (passwordInput.validity.valid)
+        {
+            passwordError.textContent = "";
+            passwordError.className = "error";
+        }
     }
     else
     {
@@ -195,22 +260,22 @@ passwordInput.addEventListener("focusout", (event) =>
 
 form.addEventListener("submit", (event) => 
 {
-    if (!emailInput.validity.valid){
+    if (!emailInput.validity.valid || emailInput.value.includes(" ")){
         showError(emailInput);
         event.preventDefault();
     }
 
-    if (!countryInput.validity.valid){
+    if (!countryInput.validity.valid || countryInput.value.includes(" ")){
         showError(countryInput);
         event.preventDefault();
     }
 
-    if (!zipCodeInput.validity.valid){
+    if (!zipCodeInput.validity.valid || zipCodeInput.value.includes(" ")){
         showError(zipCodeInput);
         event.preventDefault();
     }
 
-    if (!passwordInput.validity.valid){
+    if (!passwordInput.validity.valid || passwordInput.value.includes(" ")){
         showError(passwordInput);
         event.preventDefault();
     }

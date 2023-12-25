@@ -10,6 +10,11 @@ p * {
     display: block;
 }
 
+.field{
+    padding: 1vh 0vh;
+    position: relative;
+}
+
 input[type="email"],
 input[type="text"],
 input[type="password"]
@@ -43,6 +48,10 @@ input:valid{
 
 /*This is the style of our error messages*/
 .error{
+    position: absolute;
+
+    z-index: 99;
+    
     width: 100%;
     padding: 0;
 
